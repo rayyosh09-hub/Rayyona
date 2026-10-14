@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xizmatlar va Narxlar — DentaCare</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Base Variables & Reset */
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #14b8a6;
+      --dark: #0f172a;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo i {
+      font-size: 28px;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Page Banner */
+    .page-banner {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .page-banner h1 {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .page-banner p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 80px 0;
+    }
+
+    .category-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 4px solid var(--primary);
+      padding-left: 15px;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-border);
+    }
+
+    .price-table th, .price-table td {
+      padding: 18px 24px;
+      text-align: left;
+    }
+
+    .price-table th {
+      background: var(--gray-light);
+      font-weight: 700;
+      color: var(--dark);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .price-table td {
+      border-bottom: 1px solid var(--gray-border);
+      color: #334155;
+    }
+
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-tag {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    .action-cell {
+      text-align: right;
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 60px 0 20px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .footer-col p, .footer-col li {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 10px;
+      list-style: none;
+    }
+
+    .copyright {
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .price-table th, .price-table td {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-tooth"></i> DentaCare
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="services.html" class="active">Xizmatlar va Narxlar</a></li>
+        <li><a href="booking.html">Navbatga yozilish</a></li>
+      </ul>
+      <a href="booking.html" class="btn"><i class="fa-solid fa-calendar-check"></i> Qabulga yozilish</a>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <h1>Xizmatlarimiz va Narxlar</h1>
+      <p>Barcha xizmatlar uchun shaffof va hamyonbop narxlar ro'yxati</p>
+    </div>
+  </section>
+
+  <!-- Services List & Pricing -->
+  <section class="services-section">
+    <div class="container">
+
+      <!-- Category 1 -->
+      <h2 class="category-title"><i class="fa-solid fa-notes-medical" style="color: var(--primary);"></i> Terapiya va Davolash</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Xizmat nomi</th>
+            <th>Tavsif</th>
+            <th>Narxi</th>
+            <th class="action-cell">Amal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shifokor konsultatsiyasi</strong></td>
+            <td>Ko'rik va rentgen diagnostikasi</td>
+            <td><span class="price-tag">BEPUL</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Kariesni davolash</strong></td>
+            <td>Ilg'or kompozit plomba qo'yish</td>
+            <td><span class="price-tag">250 000 so'm dan</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Pulpitni davolash</strong></td>
+            <td>Kanal tozalash va dori qo'yish</td>
+            <td><span class="price-tag">400 000 so'm dan</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Category 2 -->
+      <h2 class="category-title"><i class="fa-solid fa-teeth" style="color: var(--primary);"></i> Ortodontiya va Estetika</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Xizmat nomi</th>
+            <th>Tavsif</th>
+            <th>Narxi</th>
+            <th class="action-cell">Amal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Metall Breketlar</strong></td>
+            <td>Ikkala jag' uchun to'liq o'rnatish</td>
+            <td><span class="price-tag">3 500 000 so'm</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Keramik Breketlar</strong></td>
+            <td>Estetik va deyarli ko'rinmas breketlar</td>
+            <td><span class="price-tag">5 000 000 so'm</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Professional Oqartirish</strong></td>
+            <td>Zoom-4 apparatida emalni oqartirish</td>
+            <td><span class="price-tag">1 200 000 so'm</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Category 3 -->
+      <h2 class="category-title"><i class="fa-solid fa-tooth" style="color: var(--primary);"></i> Implantatsiya va Jarrohlik</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Xizmat nomi</th>
+            <th>Tavsif</th>
+            <th>Narxi</th>
+            <th class="action-cell">Amal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tish oldirish (Oddiy)</strong></td>
+            <td>Og'riqsiz anesteziya bilan olib tashlash</td>
+            <td><span class="price-tag">150 000 so me</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Koreya Implanti (Osstem)</strong></td>
+            <td>Titandan tayyorlangan yuqori sifatli implant</td>
+            <td><span class="price-tag">2 800 000 so'm</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+          <tr>
+            <td><strong>Shveysariya Implanti (Straumann)</strong></td>
+            <td>Oliy toifali umrbod kafolatli implant</td>
+            <td><span class="price-tag">5 500 000 so'm</span></td>
+            <td class="action-cell"><a href="booking.html" class="btn btn-sm">Yozilish</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color: var(--white); margin-bottom: 15px;">
+            <i class="fa-solid fa-tooth" style="color: var(--accent);"></i> DentaCare
+          </div>
+          <p>Sizning tabassumingiz — bizning eng oliy mukofotimizdir.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Sahifalar</h4>
+          <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="services.html">Xizmatlar</a></li>
+            <li><a href="booking.html">Navbatga yozilish</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Aloqa</h4>
+          <p><i class="fa-solid fa-location-dot"></i> Toshkent sh., Chilonzor t., 10-mavze</p>
+          <p><i class="fa-solid fa-phone"></i> +998 (90) 123-45-67</p>
+          <p><i class="fa-solid fa-clock"></i> Har kuni: 09:00 — 20:00</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 DentaCare Klinikasi. Barcha huquqlar himoyalangan.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

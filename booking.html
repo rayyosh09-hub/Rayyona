@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbatga yozilish — DentaCare</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Base Variables & Reset */
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #14b8a6;
+      --dark: #0f172a;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+      --success: #22c55e;
+      --error: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--gray-light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo i {
+      font-size: 28px;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Booking Section */
+    .booking-section {
+      padding: 60px 0;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .booking-info h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .booking-info p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-border);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-box h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .info-box p {
+      color: var(--text-muted);
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .form-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-border);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      font-size: 15px;
+      outline: none;
+      transition: var(--transition);
+      background: #fff;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+    }
+
+    /* Alert Message */
+    .alert {
+      padding: 15px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .alert.success {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      display: block;
+    }
+
+    .alert.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 60px 0 20px 0;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .footer-col p, .footer-col li {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 10px;
+      list-style: none;
+    }
+
+    .copyright {
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .form-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-tooth"></i> DentaCare
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Bosh sahifa</a></li>
+        <li><a href="services.html">Xizmatlar va Narxlar</a></li>
+        <li><a href="booking.html" class="active">Navbatga yozilish</a></li>
+      </ul>
+      <a href="booking.html" class="btn" style="width: auto;"><i class="fa-solid fa-calendar-check"></i> Qabulga yozilish</a>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Booking Section -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-grid">
+        
+        <!-- Info Column -->
+        <div class="booking-info">
+          <h1>Qabulga Onlayn Yozilish</h1>
+          <p>Formani to'ldiring va bizning mutaxassislarimiz belgilangan vaqtda siz bilan bog'lanib, qabulni tasdiqlashadi.</p>
+          
+          <div class="info-box">
+            <h4><i class="fa-solid fa-clock"></i> Ish vaqti</h4>
+            <p>Dushanba — Yakshanba: 09:00 dan 20:00 gacha. Dam olish kunlarisiz ishlaymiz.</p>
+          </div>
+
+          <div class="info-box">
+            <h4><i class="fa-solid fa-location-dot"></i> Manzilimiz</h4>
+            <p>Toshkent shahri, Chilonzor tumani, 10-mavze (Mo'ljal: Metro bekati yaqinida).</p>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="form-card">
+          <div id="formAlert"></div>
+          
+          <form id="bookingForm">
+            <div class="form-group">
+              <label for="fullName">Ism va Familiyangiz</label>
+              <input type="text" id="fullName" class="form-control" placeholder="Masalan: Jasur Alimov" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Telefon raqamingiz</label>
+              <input type="tel" id="phone" class="form-control" placeholder="+998 90 123 45 67" required>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Xizmat turini tanlang</label>
+              <select id="service" class="form-control" required>
+                <option value="" disabled selected>Xizmatni tanlang...</option>
+                <option value="Shifokor konsultatsiyasi (Bepul)">Shifokor konsultatsiyasi (Bepul)</option>
+                <option value="Kariesni davolash">Kariesni davolash</option>
+                <option value="Pulpitni davolash">Pulpitni davolash</option>
+                <option value="Metall/Keramik Breketlar">Breketlar o'rnatish</option>
+                <option value="Tishlarni oqartirish (Zoom-4)">Tishlarni oqartirish (Zoom-4)</option>
+                <option value="Tish oldirish">Tish oldirish</option>
+                <option value="Implantatsiya">Implantatsiya</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Qabul sanasi</label>
+              <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">
+              <i class="fa-solid fa-paper-plane"></i> Navbatga yozilish
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color: var(--white); margin-bottom: 15px;">
+            <i class="fa-solid fa-tooth" style="color: var(--accent);"></i> DentaCare
+          </div>
+          <p>Sizning tabassumingiz — bizning eng oliy mukofotimizdir.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Sahifalar</h4>
+          <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="services.html">Xizmatlar</a></li>
+            <li><a href="booking.html">Navbatga yozilish</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Aloqa</h4>
+          <p><i class="fa-solid fa-location-dot"></i> Toshkent sh., Chilonzor t., 10-mavze</p>
+          <p><i class="fa-solid fa-phone"></i> +998 (90) 123-45-67</p>
+          <p><i class="fa-solid fa-clock"></i> Har kuni: 09:00 — 20:00</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 DentaCare Klinikasi. Barcha huquqlar himoyalangan.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Responsive Navbar
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Telegram Bot API Integratsiyasi
+    const BOT_TOKEN = "8978326949:AAGZ5BQ9d3Ws8qhlf8lphIHAF_kPe_4bxtE";
+    const CHAT_ID = "8306645595";
+
+    const bookingForm = document.getElementById('bookingForm');
+    const formAlert = document.getElementById('formAlert');
+    const submitBtn = document.getElementById('submitBtn');
+
+    bookingForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+
+      // Xabarni shakllantirish
+      const message = `🦷 <b>Yangi qabulga yozilish!</b>\n\n` +
+                      `👤 <b>Mijoz:</b> ${fullName}\n` +
+                      `📞 <b>Telefon:</b> ${phone}\n` +
+                      `🛠 <b>Xizmat:</b> ${service}\n` +
+                      `📅 <b>Sana:</b> ${date}\n\n` +
+                      `⚡️ <i>DentaCare Veb-saytidan yuborildi</i>`;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Yuborilmoqda...`;
+
+      try {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message,
+            parse_mode: 'HTML'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.ok) {
+          formAlert.className = "alert success";
+          formAlert.innerHTML = "✅ Muvaffaqiyatli yuborildi! Tez orada operatorlarimiz siz bilan bog'lanishadi.";
+          bookingForm.reset();
+        } else {
+          throw new Error(data.description || "Xatolik yuz berdi");
+        }
+      } catch (error) {
+        formAlert.className = "alert error";
+        formAlert.innerHTML = "❌ Xatolik yuz berdi: " + error.message + ". Iltimos, qaytadan urinib ko'ring.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Navbatga yozilish`;
+      }
+    });
+  </script>
+</body>
+</html>
